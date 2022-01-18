@@ -1,6 +1,6 @@
 from collections import defaultdict
 from functools import lru_cache
-from typing import DefaultDict, Dict, Mapping, Optional, Tuple, Type, Union
+from typing import DefaultDict, Dict, Mapping, Optional, Tuple, Type
 
 import cerberus
 from apscheduler.triggers.cron import CronTrigger
@@ -209,9 +209,9 @@ def image_definition_labels_of_container(container_id: str) -> Dict[str, str]:
 def parse_job_definitions(labels: Mapping[str, str], user: str) -> Dict[str, Dict]:
     log.debug(f'Considering labels for job definitions: {dict(labels)}')
 
-    name_grouped_definitions: DefaultDict[
-        str, Dict[str, Union[str, Dict]]
-    ] = defaultdict(dict)
+    name_grouped_definitions: DefaultDict[str, Dict[str, str | Dict]] = defaultdict(
+        dict
+    )
 
     for key, value in labels.items():
         key = key.removeprefix(cfg.label_ns)

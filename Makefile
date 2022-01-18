@@ -21,7 +21,7 @@ export PRINT_HELP_PYSCRIPT
 
 .PHONY: black
 black: ## code-formatting with black
-	 poetry run black deck_chores tests
+	 poetry run black --target-version py310 deck_chores tests
 
 .PHONY: build
 build: ## builds the Docker image
